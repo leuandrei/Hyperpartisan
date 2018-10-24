@@ -1,0 +1,16 @@
+Project name: Hyperpartisan News Detection
+coordinator: Trandabat Diana
+members names: 
+		Leustean Andrei
+		Miron Alexandru
+		Palihovici Andrei
+		Voaides Alexandru
+contact information:
+	leuandrei01@gmail.com
+	mironalex96@gmail.com
+	adipalihovici@gmail.com
+	voaides.alex@gmail.com
+	
+
+
+
