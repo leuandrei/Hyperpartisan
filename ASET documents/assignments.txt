@@ -1,0 +1,20 @@
+Assignments:
+
+Web Interface:
+    Implement web interface (Alexandru Miron)
+
+Training:
+    Find suitable Heuristics (Alexandru Miron, Andrei Palihovici)
+    Implement Heuristics (Alexandru Miron, Andrei Palihovici)
+
+    Implement Heuristics weight distribution module (Alex Voaides)
+    Integrate Heuristics weight distribution module (Andrei Leustean)
+
+Testing:
+    Heuristics testing module (Alex Voaides, Andrei Leustean)
+
+Documentation:
+    Documentation writing (Andrei Palihovici)
+
+
+
