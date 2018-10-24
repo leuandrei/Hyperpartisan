@@ -5,12 +5,12 @@ members names:
 		Miron Alexandru
 		Palihovici Andrei
 		Voaides Alexandru
+github portal: https://github.com/leuandrei/Hyperpartisan
+trello portal: https://trello.com/hyperpartisan
 contact information:
 	leuandrei01@gmail.com
 	mironalex96@gmail.com
 	adipalihovici@gmail.com
 	voaides.alex@gmail.com
-	
-
 
 
