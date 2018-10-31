@@ -1,14 +1,28 @@
 import abc
 
 class TextReceiver:
+    receivedText=""
     @abc.abstractmethod
     def getText(self, text):
         pass
 
 class ResultSender:
+    resultText=""
     @abc.abstractmethod
     def sendText(self, text):
         pass
+
+class Tokenizer:
+    inputText=TextReceiver()
+    tokenizedText=ResultSender()
+    def tokenize(self, text):
+        pass
+
+class FrequencyComputer:
+    wordList=list()
+    frequencyList=list()
+    dictionary=TextReceiver()
+    frequencies=ResultSender()
 
 # Singleton/SingletonPattern.py
 
