@@ -53,7 +53,6 @@ def parseGroundTruth(inputFile, outputFile):
         print('Out of',distribution['false']+distribution['true'], bias, 'leaning articles:', file=stats_file)
         print(distribution['false'], 'are not hyperpartisan', file=stats_file)
         print(distribution['true'], 'are hyperpartisan\n', file=stats_file)
-
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

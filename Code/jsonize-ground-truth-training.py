@@ -14,8 +14,8 @@ def load_json(json_file_path):
 	return source_dict
 
 
-articles = 'articles-training-20180831.xml'
-tags = 'ground-truth-training-20180831.xml'
+articles = '../data/articles-training-20180831.xml'
+tags = '../data/ground-truth-training-20180831.xml'
 
 with open(tags) as fp:
 	lines = fp.readlines()
