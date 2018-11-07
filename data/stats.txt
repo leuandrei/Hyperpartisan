@@ -1,0 +1,24 @@
+Out of 800000 articles:
+400000 are not hyperpartisan
+400000 are hyperpartisan
+
+Out of 200000 right leaning articles:
+0 are not hyperpartisan
+200000 are hyperpartisan
+
+Out of 200000 left leaning articles:
+0 are not hyperpartisan
+200000 are hyperpartisan
+
+Out of 221776 least leaning articles:
+221776 are not hyperpartisan
+0 are hyperpartisan
+
+Out of 65229 right-center leaning articles:
+65229 are not hyperpartisan
+0 are hyperpartisan
+
+Out of 112995 left-center leaning articles:
+112995 are not hyperpartisan
+0 are hyperpartisan
+
