@@ -1,4 +1,5 @@
 import abc
+import nltk.tokenize
 
 class TextReceiver:
     receivedText=""
@@ -60,7 +61,7 @@ print(z)
 <__main__.__OnlyOne instance at 0076B7AC>spam
 <__main__.__OnlyOne instance at 0076B7AC>spam
 <__main__.__OnlyOne instance at 0076B7AC>spam
-<__main__.OnlyOne instance at 0076C54C>
+<__main__.OnlyOne 1instance at 0076C54C>
 <__main__.OnlyOne instance at 0076DAAC>
 <__main__.OnlyOne instance at 0076AA3C>
 '''"""
@@ -121,3 +122,37 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+print(nltk.word_tokenize("<xml><article>Acesta aets un artciel</article></xml>"))
+
+class Andreil:
+    def tokenize(self, text):
+        return nltk.word_tokenize(text)
+
+    '''def compute_frequency(self, text):
+        dictionary=dict()
+        list = nltk.word_tokenize(text)
+        for i in list:
+            if (str(i) not in dictionary):
+                dictionary[str(i)]="1"
+            else:
+                dictionary[str(i)]=str(int(dictionary.get(str(i)))+1)
+        return dictionary
+
+    def parser(self, text):
+        list = nltk.word_tokenize(text)
+        ok=0
+        i=0
+        while i<len(list):
+            if (str(list[i]) == '>' and ok == 1):
+                list.remove(list[i])
+                ok = 0
+            elif (str(list[i])=='<'):
+                ok=1
+                list.remove(list[i])
+            elif (ok==1):
+                list.remove(list[i])
+            else:
+                i=i+1
+        return list
+'''
