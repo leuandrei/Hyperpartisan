@@ -125,11 +125,15 @@ if __name__ == "__main__":
 
 print(nltk.word_tokenize("<xml><article>Acesta aets un artciel</article></xml>"))
 
+from aspect_l import logger
+
 class Andreil:
+    @logger
     def tokenize(self, text):
         return nltk.word_tokenize(text)
 
-    '''def compute_frequency(self, text):
+    @logger
+    def compute_frequency(self, text):
         dictionary=dict()
         list = nltk.word_tokenize(text)
         for i in list:
@@ -139,6 +143,7 @@ class Andreil:
                 dictionary[str(i)]=str(int(dictionary.get(str(i)))+1)
         return dictionary
 
+    @logger
     def parser(self, text):
         list = nltk.word_tokenize(text)
         ok=0
@@ -155,4 +160,14 @@ class Andreil:
             else:
                 i=i+1
         return list
-'''
+print("APELURILE DE JOS:")
+
+a = Andreil()
+test_text = "This text. shall be, replaced:"
+print(a.tokenize(test_text))
+
+test_text = "A dict within a dict within another dict"
+print(a.compute_frequency(test_text))
+
+test_text = "<tag> orice numar este <=5"
+print(a.parser(test_text))
