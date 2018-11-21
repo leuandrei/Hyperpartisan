@@ -3,6 +3,9 @@ import xml.etree.ElementTree as ET
 import sys
 import pprint
 import re
+import nltk
+
+nltk.download('punkt')
 
 REGEX_FLAGS = re.VERBOSE | re.MULTILINE | re.IGNORECASE
 
@@ -10,18 +13,26 @@ re_email = '(([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6}))'
 re_url = '((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?)'
 re_ipv4 = '([0-9]{1,3}([.][0-9]{1,3}){3})'
 re_phone = '(((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})|( (0\d{3}) ((\ -\ \d{6}) | ([-/]\d{2}(-\d{2}){2})) ) )'
-re_hyphen_words = '([A-Z]\w+(-[A-Z]\w+)+)'
-re_words = '(\w+)'
+re_hyphen_words = "([-']?[a-zA-Z]+([-'][a-zA-Z]+)*[-']?)"
+re_words = "([a-zA-Z]+)"
 
 regexes = [
-    re_ipv4,
-    re_email,
-    re_url,
-    re_phone,
+    #re_ipv4,
+    #re_email,
+    #re_url,
+    #re_phone,
     re_hyphen_words,
     re_words]
 
 patterns = re.compile('|'.join(x for x in regexes), REGEX_FLAGS)
+
+stop_words_file = open("../data/stopwords.txt", "r+")
+stop_words = [word[:-1] for word in stop_words_file]
+
+
+
+def nltk_tokenize(text):
+	return nltk.word_tokenize(text)
 
 def tokenize(text):
 	tokens = []
@@ -48,13 +59,15 @@ word_dict = {
 
 articles = '../data/articles-training-20180831.xml'
 
-max_article_parse = 10000
+max_article_parse = 800000
 article_count = 0
 
 for event, article in ET.iterparse(articles):
 	if article_count == max_article_parse:
 		break
 	if article.tag == "article":
+		if article_count % 10000 == 0:
+			print('Parsing article {article_count}'.format(article_count = article_count))
 		article_count += 1
 		articleId = article.attrib['id']
 		articleContent = "".join(article.itertext())
@@ -63,29 +76,26 @@ for event, article in ET.iterparse(articles):
 
 		articleTokens = tokenize(articleContent)
 		for token in articleTokens:
-			if token in word_dict[articleIsHyperPartisan]:
-				word_dict[articleIsHyperPartisan][token] += 1
-			else:
-				word_dict[articleIsHyperPartisan][token] = 1
+			if token not in stop_words:
+				if token in word_dict[articleIsHyperPartisan]:
+					word_dict[articleIsHyperPartisan][token] += 1
+				else:
+					word_dict[articleIsHyperPartisan][token] = 1
+		article.clear()
 
-final_true_dict = { k:v for k,v in word_dict['true'].items() if v>10}
-final_false_dict = { k:v for k,v in word_dict['false'].items() if v>10}
+outputJSON = open('../data/word-count.json', 'w+')
 
-final_true_dict = sorted(final_true_dict.items(), key=lambda kv: kv[1], reverse=True)
-final_false_dict = sorted(final_false_dict.items(), key=lambda kv: kv[1], reverse=True)
+final_word_dict = {
+	"true": {},
+	"false": {}
+}
 
-final_dict = {'true':final_true_dict, 'false':final_false_dict}
+for key in sorted(word_dict['true'], key=word_dict['true'].get, reverse=True):
+	if word_dict['true'][key] > 10:
+		final_word_dict['true'][key] = word_dict['true'][key]
+	
+for key in sorted(word_dict['false'], key=word_dict['false'].get, reverse=True):
+	if word_dict['false'][key] > 10:
+		final_word_dict['false'][key] = word_dict['false'][key]	
 
-pp = pprint.PrettyPrinter(indent=4)
-
-outputFile = open('../data/word-count.txt', 'w+')
-
-print('In', max_article_parse, 'articles the following words have been found:\n', file=outputFile)
-pprint.pprint(final_dict, outputFile)
-
-#sorted_word_dict = sorted(word_dict.items(), key=lambda kv: kv[1])
-#print(sorted_word_dict)
-
-#
-#		hp = articles_dict[id][0]
-#		bias = articles_dict[id][1]
+print(json.dumps(final_word_dict, indent=4), file=outputJSON)
