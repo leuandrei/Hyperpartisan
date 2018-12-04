@@ -1,6 +1,6 @@
 import re
 
-path_to_articles = 'articles-training-20180831.xml'
+path_to_articles = 'file.txt'
 xml_file = open(path_to_articles, 'r')
 xml_out = open(r'xml_out.xml', 'w')
 parsed_xml = open(r'parsed_xml.txt', 'w')
