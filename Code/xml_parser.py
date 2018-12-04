@@ -1,6 +1,11 @@
 import re
 
+<<<<<<< HEAD
 xml_file = open(r'E:\articles-training-20180831.xml', 'r')
+=======
+path_to_articles = 'file.txt'
+xml_file = open(path_to_articles, 'r')
+>>>>>>> 21862bb1293bb098852517806d127f29de9eebcf
 xml_out = open(r'xml_out.xml', 'w')
 parsed_xml = open(r'parsed_xml.txt', 'w')
 
