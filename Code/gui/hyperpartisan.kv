@@ -1,0 +1,38 @@
+<CustButton@Button>:
+    font_size: 28
+
+<Content>:
+    id: contentCanvas
+    rows: 3
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        TextInput:
+            id: txt_input
+            multiline: True
+            font_size: 20
+
+    BoxLayout:
+        size_hint_y: None
+        height: "70dp"
+        CustButton:
+            text: "Classify"
+            on_press: contentCanvas.change_result_color()
+
+    BoxLayout:
+        size_hint_y: None
+        height: "70dp"
+        id: resultLayout
+        my_color: (0, 1, 0, 1)
+        canvas:
+            Color:
+                id: rectangleColor
+                rgba: self.my_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            id: resultLabel
+            text: "Not HyperPartisan"
+            font_size: 28
