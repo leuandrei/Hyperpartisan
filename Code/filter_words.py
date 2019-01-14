@@ -2,13 +2,16 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 
 text="Placeholder text"
-stopWords=set(stopwords.words('english'))
-words = word_tokenize(text)
 
-wordsFiltered = []
+def filtering(text):
+    stopWords=set(stopwords.words('english'))
+    words = word_tokenize(text)
 
-for w in words:
-    if w not in stopWords:
-        wordsFiltered.append(w)
+    wordsFiltered = []
 
-print(wordsFiltered)
+    for w in words:
+        if w not in stopWords:
+            wordsFiltered.append(w)
+
+    return wordsFiltered
+print(filtering(text))
