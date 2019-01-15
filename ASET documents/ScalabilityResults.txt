@@ -1,0 +1,19 @@
+### Average time (n = 10) for x = 100 for main.py:
+
+t = 1.02s
+
+### Average time (n = 10) for x = 1000 for main.py:
+
+t = 2:56s
+
+### Average time (n = 10) for x = 2000 for main.py:
+
+t = 5:07s
+
+### Average time (n = 10) for x = 10 000 for main.py:
+
+t = 24:38s
+
+### Average time (n = 10) for x = 100 000 for main.py:
+
+t = 235:32s
