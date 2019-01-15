@@ -16,4 +16,4 @@ articles_dict = load_json('../Code/articles-data.json')
 
 article = sys.argv[1]
 
-print('Article {articleId} classified as {classification} using both methods with prob {prob}. Guess: {is_correct}'.format(articleId = getArticleId(article), classification = getClassification(article), is_correct = getCorrectness(article))
+print('Article {articleId} classified as {classification} using both methods with prob {prob}. Guess: {is_correct}'.format(articleId = getArticleId(article), classification = getClassification(article), prob = getProb(article), is_correct = getCorrectness(article)))
