@@ -2,3 +2,5 @@
 data/*.xml
 data/*.xsd
 final/_*
+*__pycache__
+article*.txt
